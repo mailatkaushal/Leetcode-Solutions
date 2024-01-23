@@ -1,3 +1,6 @@
+// Time: O(n)
+// Space: O(1)
+
 class Solution {
 public:
   int rob(vector<int>& nums) {
@@ -21,3 +24,5 @@ public:
     return rob2;
   }
 };
+
+// a-4
