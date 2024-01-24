@@ -40,6 +40,39 @@ public:
 };
 
 // Time: O(n)
+// Space: O(n)
+
+class Solution {
+public:
+  Node* flatten(Node* head) {
+    if (!head)
+      return head;
+
+    stack<Node*> stk;
+    Node* curr = head;
+    
+    while (curr) {
+      if (curr->child) {
+        if (curr->next) 
+          stk.push(curr->next);
+        curr->next = curr->child;
+        curr->next->prev = curr;
+        curr->child = nullptr;
+      }
+      else if (!curr->next && !stk.empty()) {
+        Node* tmp = stk.top();
+        stk.pop();
+        curr->next = tmp;
+        tmp->prev = curr;
+      }
+      curr = curr->next;
+    }
+
+    return head;
+  }
+};
+
+// Time: O(n)
 // Space: O(1)
 
 class Solution {
