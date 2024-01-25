@@ -1,6 +1,6 @@
 /*
   Given 2 strings, return length of longest common subsequence
-  Ex. text1 = "abcde", text2 = "ace" -> 3, "ace" is LCS
+  Ex. s = "abcde", t = "ace" -> 3, "ace" is LCS
   
                     j
                 a   c   e   
@@ -8,7 +8,7 @@
           | 0   0   0   0
       a   | 0   1   1   1
       b   | 0   1   1   1
-  i   c   | 0   1   2   2   --> visualization of below, DP bottom-up
+  i   c   | 0   1   2   2   --> visualization DP bottom-up
       d   | 0   1   2   2
       e   | 0   1   2   3
 
