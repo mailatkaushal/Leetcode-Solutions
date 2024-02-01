@@ -1,4 +1,4 @@
-// Time: O(30*logn)
+// Time:  O(30*logn)
 // Space: O(logn)
 
 class Solution {

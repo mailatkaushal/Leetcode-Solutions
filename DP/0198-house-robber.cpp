@@ -1,4 +1,4 @@
-// Time: O(n)
+// Time:  O(n)
 // Space: O(1)
 
 class Solution {
@@ -15,5 +15,3 @@ public:
     return rob2;
   }
 };
-
-// a-4

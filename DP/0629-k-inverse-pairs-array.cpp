@@ -1,4 +1,4 @@
-// Time: O(n*k*n)
+// Time:  O(n*k*n)
 // Space: O(n*k)
 
 class Solution {
@@ -40,7 +40,7 @@ public:
       4   | 1   3   5   6   5   3
       5   | 1   4   8   15  20  22
 
-  Time: O(n*k*n)
+  Time:  O(n*k*n)
   Space: O(n*k)
 */
 
@@ -65,7 +65,7 @@ public:
   }
 };
 
-// Time: O(n*k)
+// Time:  O(n*k)
 // Space: O(k)
 
 class Solution {

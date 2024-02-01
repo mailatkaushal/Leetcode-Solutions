@@ -1,4 +1,4 @@
-// Time: o(m*n*maxMove)
+// Time:  O(m*n*maxMove)
 // Space: O(m*n*maxMove)
 
 class Solution {
@@ -37,7 +37,7 @@ public:
   }
 };
 
-// Time: o(m*n*maxMove)
+// Time:  O(m*n*maxMove)
 // Space: O(m*n*maxMove)
 
 class Solution {
@@ -68,7 +68,7 @@ public:
   }
 };
 
-// Time: o(m*n*maxMove)
+// Time:  O(m*n*maxMove)
 // Space: O(m*n)
 
 class Solution {

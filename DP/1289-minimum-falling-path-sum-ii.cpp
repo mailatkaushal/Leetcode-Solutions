@@ -1,4 +1,4 @@
-// Time: O(n^3)
+// Time:  O(n^3)
 // SPace: O(1)
 
 class Solution {
@@ -20,5 +20,3 @@ public:
     return *min_element(A[n-1].begin(), A[n-1].end());
   }
 };
-
-// a-2

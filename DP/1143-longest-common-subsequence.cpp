@@ -12,7 +12,7 @@
       d   | 0   1   2   2
       e   | 0   1   2   3
 
-  Time: O(m*n)
+  Time:  O(m*n)
   Space: O(m*n)
 */
 
@@ -37,7 +37,7 @@ public:
   }
 };
 
-// Time: O(m*n)
+// Time:  O(m*n)
 // Space: O(n)
 
 class Solution {

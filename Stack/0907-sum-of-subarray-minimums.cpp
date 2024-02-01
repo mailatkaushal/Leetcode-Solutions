@@ -1,4 +1,4 @@
-// Time: O(n)
+// Time:  O(n)
 // Space: O(n)
 
 typedef long long ll;
@@ -69,5 +69,3 @@ public:
     return sum;
   }
 };
-
-// a-1

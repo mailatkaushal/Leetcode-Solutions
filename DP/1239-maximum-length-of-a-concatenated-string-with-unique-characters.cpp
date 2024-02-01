@@ -1,4 +1,4 @@
-// Time: O(n*2^n)
+// Time:  O(n*2^n)
 // Space: O(1)
 
 class Solution {
@@ -41,5 +41,3 @@ public:
     return false;
   }
 };
-
-// a-6

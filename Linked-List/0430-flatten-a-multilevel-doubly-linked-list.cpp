@@ -1,4 +1,4 @@
-// Time: O(n)
+// Time:  O(n)
 // Space: O(n)
 
 class Solution {
@@ -39,7 +39,7 @@ public:
   }
 };
 
-// Time: O(n)
+// Time:  O(n)
 // Space: O(n)
 
 class Solution {
@@ -72,7 +72,7 @@ public:
   }
 };
 
-// Time: O(n)
+// Time:  O(n)
 // Space: O(1)
 
 class Solution {

@@ -1,4 +1,4 @@
-// Time: o(m*n)
+// Time:  O(m*n)
 // Space: O(m*n)
 
 class Solution {
@@ -24,7 +24,7 @@ public:
   }
 };
 
-// Time: o(m*n)
+// Time:  O(m*n)
 // Space: O(1)
 
 class Solution {
@@ -45,5 +45,3 @@ public:
     return grid[m-1][n-1];
   }
 };
-
-// a-2

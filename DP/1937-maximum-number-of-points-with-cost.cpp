@@ -1,5 +1,5 @@
 // Bruteforce - TLE
-// Time: O(m*n^2)
+// Time:  O(m*n^2)
 // Space: O(n)
 
 class Solution {
@@ -26,7 +26,7 @@ public:
   }
 };
 
-// Time: O(m*n)
+// Time:  O(m*n)
 // Space: O(n)
 
 typedef long long ll;
@@ -66,5 +66,3 @@ public:
     return res;
   }
 };
-
-// a-3

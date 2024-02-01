@@ -1,4 +1,4 @@
-// Time: o(n)
+// Time:  O(n)
 // Space: O(1)
 
 class Solution {
@@ -26,5 +26,3 @@ public:
     return {dup, mis};
   }
 };
-
-// a-7

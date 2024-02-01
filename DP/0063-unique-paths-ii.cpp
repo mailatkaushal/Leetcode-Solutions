@@ -1,4 +1,4 @@
-// Time: o(m*n)
+// Time:  O(m*n)
 // Space: O(m*n)
 
 class Solution {
@@ -34,7 +34,7 @@ public:
   }
 };
 
-// Time: O(m*n)
+// Time:  O(m*n)
 // Space: O(n)
 
 class Solution {
@@ -69,7 +69,7 @@ public:
   }
 };
 
-// Time: O(m*n)
+// Time:  O(m*n)
 // Space: O(n)
 
 class Solution {

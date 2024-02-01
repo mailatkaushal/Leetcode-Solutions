@@ -1,4 +1,4 @@
-// Time: O(n^2)
+// Time:  O(n^2)
 // Space: O(n^2)
 
 class Solution {
@@ -21,7 +21,7 @@ public:
   }
 };
 
-// Time: O(n^2)
+// Time:  O(n^2)
 // Space: O(n)
 
 class Solution {
@@ -43,7 +43,7 @@ public:
   }
 };
 
-// Time: O(n^2)
+// Time:  O(n^2)
 // Space: O(1)
 
 class Solution {
@@ -63,5 +63,3 @@ public:
     return *min_element(A[n-1].begin(), A[n-1].end());
   }
 };
-
-// a-2
