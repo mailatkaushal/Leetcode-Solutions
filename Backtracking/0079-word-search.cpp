@@ -1,4 +1,4 @@
-// Time:  O(N * 3 ^ len of word) - where N, number of cells in board
+// Time:  O(N * 4 * 3 ^ len of word - 1) ~ O(N * 3 ^ len of word) - where N, number of cells in board
 // Space: O(len of word) - function call stack
 
 class Solution {
