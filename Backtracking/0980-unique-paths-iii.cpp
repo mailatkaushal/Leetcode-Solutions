@@ -1,4 +1,4 @@
-// Time:  O(3 ^ N) - where N, number of cells in grid
+// Time:  O(4 * 3 ^ N - 1) ~ O(3 ^ N) - where N, number of cells in grid
 // Space: O(N) - function call stack
 
 class Solution {
