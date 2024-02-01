@@ -1,5 +1,5 @@
-// Time: O(3^m*n)
-// Space: O(m*n)
+// Time:  O(3 ^ N) - where N, number of cells in grid
+// Space: O(N) - function call stack
 
 class Solution {
 public:
