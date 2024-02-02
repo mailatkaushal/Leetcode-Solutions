@@ -1,4 +1,4 @@
-// Time  : O(k^n)
+// Time  : O(k^n) - where k, max number of moves at any index
 // Space : O(n)
 
 class Solution {
