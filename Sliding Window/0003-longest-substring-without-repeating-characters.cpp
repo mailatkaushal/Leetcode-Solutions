@@ -34,7 +34,7 @@ public:
 };
 
 /*
-  Approach - 1 (Using map data structure)
+  Approach - 2 (Using map data structure)
   Time  : O(n)
   Space : O(n)
 
