@@ -30,7 +30,7 @@ public:
     unordered_map<string, vector<string>> ump;
 
     for (auto& str : strs) {
-      string key = sort(str);
+      string key = sortStr(str);
       ump[key].push_back(str);
     }
 
@@ -43,7 +43,7 @@ public:
     return res;
   }
 
-  string sort(string& s) {
+  string sortStr(string& s) {
     vector<int> v(26);
     for (char& c : s) 
       ++v[c - 'a'];
