@@ -1,5 +1,8 @@
-// Time  : O(n^2)
-// Space : O(n^2)
+/*
+  Recursion + Memo
+  Time  : O(n^2)
+  Space : O(n^2)
+*/
 
 class Solution {
 public:
@@ -28,3 +31,49 @@ public:
     return max(taken, notTaken);
   }
 };
+
+/*
+  Bottom Up DP
+  Time  : O(n^2)
+  Space : O(n^2)
+*/
+
+class Solution {
+public:
+  int lengthOfLIS(vector<int>& A) {
+    int n = A.size();
+
+    vector<int> dp(n, 1);
+    int res = 1;
+
+    for (int i = 0; i < n; ++i) {
+      for (int j = 0; j < i; ++j) {
+        if (A[j] < A[i])
+          dp[i] = max(dp[i], 1 + dp[j]);
+      }
+      res = max(res, dp[i]);
+    }
+
+    return res;
+  }
+};
+
+/*
+  Bottom Up DP - 2nd way
+  Time  : O(n^2)
+  Space : O(n^2)
+*/
+
+class Solution:
+  def lengthOfLIS(self, A: List[int]) -> int:
+    n = len(A)
+    dp = [1] * n
+    res = 1
+
+    for i in range(n - 1, -1, -1):
+      for j in range(i + 1, n):
+        if A[i] < A[j]:
+          dp[i] = max(dp[i], 1 + dp[j])
+      res = max(res, dp[i])
+
+    return res
