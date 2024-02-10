@@ -61,3 +61,37 @@ public:
     return prev[n];
   }
 };
+
+/*
+  Bottom Up Dp - 2nd way
+  Ex. s = "abcde", t = "ace" -> 3, "ace" is LCS
+
+                j
+            a   c   e   
+            _   _   _   _
+      a   | 3   2   1   0
+      b   | 2   2   1   0
+  i   c   | 2   2   1   0    --> visualization DP bottom-up
+      d   | 1   1   1   0
+      e   | 1   1   1   0
+          | 0   0   0   0
+
+  Time:  O(m*n)
+  Space: O(m*n)
+*/
+
+class Solution:
+  def longestCommonSubsequence(self, s: str, t: str) -> int:
+    m = len(s)
+    n = len(t)
+
+    dp = [[0] * (n + 1) for i in range(m + 1)]
+
+    for i in range(m - 1, -1, -1):
+      for j in range(n - 1, -1, -1):
+        if s[i] == t[j]:
+          dp[i][j] = 1 + dp[i + 1][j + 1]
+          continue
+        dp[i][j] = max(dp[i + 1][j], dp[i][j + 1])
+
+    return dp[0][0]
