@@ -54,7 +54,7 @@ public:
     int m = grid.size();
     int n = grid[0].size();
 
-    int dp[71][70][70] = {0};
+    int dp[70][70][70] = {0};
     // dp[r][c1][c2] =  max cherries that can be collected till (row, c1) by robot1 and (row, c2) by robot2
 
     // for row 0 robot1 is at col 0 & robot2 is at col n-1
