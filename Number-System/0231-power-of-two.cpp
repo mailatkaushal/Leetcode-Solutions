@@ -1,5 +1,5 @@
 // Time  : O(logn)
-// Space  : O(1)
+// Space : O(1)
 
 class Solution:
   def isPowerOfTwo(self, n: int) -> bool:
@@ -9,7 +9,7 @@ class Solution:
     return x == n
 
 // Time  : O(logn)
-// Space  : O(1)
+// Space : O(1)
 
 class Solution {
 public:
@@ -27,7 +27,7 @@ public:
 };
 
 // Time  : O(1)
-// Space  : O(1)
+// Space : O(1)
 
 class Solution:
   def isPowerOfTwo(self, n: int) -> bool:
