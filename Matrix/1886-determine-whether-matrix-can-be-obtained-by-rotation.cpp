@@ -1,3 +1,6 @@
+// Time  : O(n^2)
+// Space : O(1)
+
 class Solution:
   def findRotation(self, mat: List[List[int]], target: List[List[int]]) -> bool:
     # check for 0, 90, 180, 270 degrees
