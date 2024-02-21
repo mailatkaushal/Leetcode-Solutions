@@ -64,3 +64,40 @@ class Solution:
   :-)
 
 '''
+
+class Solution:
+  def isRectangleOverlap(self, rec1: List[int], rec2: List[int]) -> bool:
+    l1, b1, r1, t1 = rec1
+    l2, b2, r2, t2 = rec2
+  
+    l = max(l1, l2)
+    r = min(r1, r2)
+    b = max(b1, b2)
+    t = min(t1, t2)
+    
+    return r - l > 0 and t - b > 0
+
+'''
+  [l1,b1,r1,t1] -> rec1
+  [l2,b2,r2,t2] -> rec2
+
+               ______________ r2,t2
+              |              |
+       _______|______ r1,t1  |
+      |       |______|_______|
+      |     l2,b2    |
+      |______________|
+    l1,b1
+
+  find the edges of overlaped area
+  
+  l = max(l1, l2)
+  r = min(r1, r2)
+  b = max(b1, b2)
+  t = min(t1, t2)
+
+  If both edges are positive, it means that the overlap has positive area
+
+  :-)
+
+'''
