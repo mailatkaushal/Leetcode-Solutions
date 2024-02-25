@@ -1,3 +1,6 @@
+// Time  : O(1)
+// Space : O(1)
+
 class Solution:
   def computeArea(self, l1: int, b1: int, r1: int, t1: int, l2: int, b2: int, r2: int, t2: int) -> int:
     # find the edges of the overlaped area

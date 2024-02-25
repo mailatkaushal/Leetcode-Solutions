@@ -1,3 +1,6 @@
+// Time  : O(n^2)
+// Space : O(1)
+
 class Solution:
   def rotate(self, matrix: List[List[int]]) -> None:
     '''
