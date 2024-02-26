@@ -1,6 +1,30 @@
 // Time:  O(n)
 // Space: O(n)
 
+class Solution:
+  def numDecodings(self, s: str) -> int:
+    n = len(s)
+    mem = [-1] * (n + 1)
+
+    def dfs(i: int):
+      if i == n:
+        return 1
+      if mem[i] != -1:
+        return mem[i]
+      if s[i] == '0':
+        return 0
+ 
+      res = dfs(i+1)
+      if i < n-1 and (s[i] == '1' or (s[i] == '2' and s[i+1] <= '6')):
+        res += dfs(i+2)
+      mem[i] = res
+      return res
+
+    return dfs(0)
+
+// Time:  O(n)
+// Space: O(n)
+
 class Solution {
 public:
   int numDecodings(string s) {
