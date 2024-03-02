@@ -1,8 +1,6 @@
-/*
-  1-dimensional BFS
-  Time  : O(n)
-  Space : O(1)
-*/
+// 1-D BFS
+// Time  : O(n)
+// Space : O(1)
 
 class Solution {
 public:
