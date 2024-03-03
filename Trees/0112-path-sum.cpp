@@ -6,7 +6,6 @@ public:
   bool f(TreeNode* root, int k) {
     if (!root)
       return false;
-
     if (!root->left && !root->right) 
       return k - root->val == 0;
 
