@@ -1,0 +1,4 @@
+n & (n - 1) 
+set the rightmost 1-bit to 0
+checking if a num is power of two
+counting number of set bits
