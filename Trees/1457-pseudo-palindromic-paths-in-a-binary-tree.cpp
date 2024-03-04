@@ -1,5 +1,5 @@
-// Time:  O(n)
-// Space: O(n)
+// Time  : O(n)
+// Space : O(n)
 
 class Solution {
 public:
@@ -32,8 +32,8 @@ public:
   }
 };
 
-// Time: O(n)
-// Space: O(1)
+// Time  : O(n)
+// Space : O(h)
 
 class Solution {
 public:
