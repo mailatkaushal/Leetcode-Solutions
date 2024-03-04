@@ -1,3 +1,4 @@
+// BFS
 // Time  : O(n)
 // Space : O(n)
 
@@ -70,6 +71,44 @@ public:
           prev = curr;
         }
       }
+    }
+
+    return true;
+  }
+};
+
+// minimised code
+// Time  : O(n)
+// Space : O(n)
+
+class Solution {
+public:
+  bool isEvenOddTree(TreeNode* root) {
+    queue<TreeNode*> q;
+    q.push(root);
+    bool even = false;
+
+    while (!q.empty()) {
+      even = !even;
+      int n = q.size();
+      int prev = even == true ? INT_MIN : INT_MAX;
+
+      while (n--) {
+        TreeNode* node = q.front();
+        q.pop();
+
+        if (even && ((node->val & 1) == 0 || prev >= node->val))
+          return false;
+        if (!even && ((node->val & 1) == 1 || prev <= node->val))
+          return false;
+
+        prev = node->val;
+
+        if (node->left)
+          q.push(node->left);
+        if (node->right)
+          q.push(node->right);
+      } 
     }
 
     return true;
