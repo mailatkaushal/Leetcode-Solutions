@@ -30,7 +30,7 @@ public:
 };
 
 // Time  : O(n)
-// Space : O(1)
+// Space : O(h)
 
 class Solution:
   def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
