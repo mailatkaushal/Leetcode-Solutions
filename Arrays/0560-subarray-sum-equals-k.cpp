@@ -1,3 +1,27 @@
+// Time:  O(n^2)
+// Space: O(n)
+
+class Solution {
+public:
+  int subarraySum(vector<int>& A, int k) {
+    int n = A.size();
+    int cnt = 0;
+    vector<int> dp(n+1);
+
+    for (int i = 1; i <= n; ++i) 
+      dp[i] = dp[i-1] + A[i-1];
+
+    for (int i = 1; i <= n; ++i) {
+      for (int j = 0; j < i; ++j) {
+        if (k == dp[i] - dp[j])
+          ++cnt;
+      }
+    }
+
+    return cnt;
+  }
+};
+
 // Time:  O(n)
 // Space: O(n)
 
