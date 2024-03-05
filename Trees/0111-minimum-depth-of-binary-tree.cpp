@@ -1,3 +1,31 @@
+// DFS
+// Time:  O(n)
+// Space: O(h)
+
+class Solution {
+public:
+  int min_lvl = INT_MAX;
+
+  void dfs(TreeNode* root, int lvl) {
+    if (root == nullptr)
+      return;
+    if (root->left == nullptr && root->right == nullptr)
+      min_lvl = min(min_lvl, lvl);
+    
+    dfs(root->left, lvl+1);
+    dfs(root->right, lvl+1);
+  } 
+
+  int minDepth(TreeNode* root) {
+    if (root == nullptr)
+      return 0;
+      
+    dfs(root, 1);
+    return min_lvl;
+  }
+};
+
+// BFS
 // Time:  O(n)
 // Space: O(n)
 
