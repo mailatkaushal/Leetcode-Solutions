@@ -28,6 +28,7 @@ public:
 class Solution {
 public:
   int numSquares(int n) {
+    // dp[i]: minimum number of perfect square that sum to i
     vector<int> dp(n+1, n);
     dp[0] = 0;
 
