@@ -1,3 +1,4 @@
+# custom binary search
 # Time  : O(logn)
 # Sapce : O(1)
 
@@ -6,7 +7,6 @@ class Solution:
     n = len(A)
     res = [0] * 2
 
-    # lower bound
     i = -1
     lo, hi = 0, n - 1
     while lo <= hi:
@@ -20,7 +20,6 @@ class Solution:
         hi = mid - 1
     res[0] = i
 
-    # upper bound
     i = -1
     lo, hi = 0, n - 1
     while lo <= hi:
@@ -39,7 +38,7 @@ class Solution:
 # c++ stl
 # Time  : O(logn)
 # Sapce : O(1)
-  
+ 
 class Solution {
 public:
   vector<int> searchRange(vector<int>& A, int target) {
@@ -55,3 +54,37 @@ public:
     return {-1, -1};
   }
 };
+
+# lower_bound and upper_bound in python 
+
+class Solution:
+  def searchRange(self, A: List[int], target: int) -> List[int]:
+    n = len(A)
+
+    def lowerBound():
+      lo, hi = 0, n
+      while lo < hi:
+        mid = lo + (hi - lo) // 2
+        if A[mid] < target:
+          lo = mid + 1
+        else:
+          hi = mid
+      return lo
+
+    def upperBound():
+      lo, hi = 0, n
+      while lo < hi:
+        mid = lo + (hi - lo) // 2
+        if A[mid] <= target:
+          lo = mid + 1
+        else:
+          hi = mid
+      return lo
+      
+    l = lowerBound()
+    r = upperBound()
+
+    if l < n and A[l] == target:
+      return [l, r - 1]
+    
+    return [-1, -1]
