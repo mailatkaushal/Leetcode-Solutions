@@ -5,7 +5,7 @@ class Solution:
   def search(self, A: List[int], target: int) -> int:
     n = len(A)
 
-    def getPivot():
+    def getPivot():  # minimum element
       lo, hi = 0, n - 1
       while lo < hi:
         mid = lo + (hi - lo) // 2
