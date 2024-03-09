@@ -9,7 +9,7 @@ class Solution:
       lo, hi = 0, n - 1
       while lo < hi:
         mid = lo + (hi - lo) // 2
-        if A[[0] <= A[mid]]:
+        if A[0] <= A[mid]:
           lo = mid + 1
         else:
           hi = mid
