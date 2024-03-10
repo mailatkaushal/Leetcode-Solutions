@@ -5,25 +5,20 @@ class Solution:
   def search(self, A: List[int], target: int) -> bool:
     n = len(A)
 
-    def getPivot():
-      lo, hi = 0, n - 1
+      def getPivot():
+      lo, hi = 0, len(A) - 1
       while lo < hi:
-        while (lo < hi and A[lo] == A[lo + 1]):
-          lo += 1
-        while (lo < hi and A[hi - 1] == A[hi]):
-          hi -= 1
-        # [2,2,3,2,2,2,2]
-        # lo     m     hi
-        # Here, A[0] <= A[mid] 
-        # and we'll ignore left half but pivot lies there..
-        # so, ignore duplicates
-        
         mid = lo + (hi - lo) // 2
         if A[mid] > A[hi]:
           lo = mid + 1
-        else:
+        elif A[mid] < A[hi]:
           hi = mid
-      return lo
+        else:  # A[mid] == A[hi]
+          if hi > 0 and A[hi - 1] <= A[hi]:
+            hi -= 1
+          else:
+            break
+      return hi
 
     def binarySearch(lo, hi):
       while lo <= hi:
