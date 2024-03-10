@@ -14,7 +14,7 @@ class Solution:
         elif A[mid] < target:
           lo = mid + 1
         else:
-          hi = mid-1
+          hi = mid - 1
       return False
 
     for i in range(m):
