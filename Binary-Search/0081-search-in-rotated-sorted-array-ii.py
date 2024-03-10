@@ -8,10 +8,10 @@ class Solution:
     def getPivot():
       lo, hi = 0, n - 1
       while lo < hi:
-        while (lo < hi and A[hi - 1] == A[hi]):
-          hi -= 1
         while (lo < hi and A[lo] == A[lo + 1]):
           lo += 1
+        while (lo < hi and A[hi - 1] == A[hi]):
+          hi -= 1
         # [2,2,3,2,2,2,2]
         # lo     m     hi
         # Here, A[0] <= A[mid] 
@@ -19,7 +19,7 @@ class Solution:
         # so, ignore duplicates
         
         mid = lo + (hi - lo) // 2
-        if A[0] <= A[mid]:
+        if A[mid] > A[hi]:
           lo = mid + 1
         else:
           hi = mid
