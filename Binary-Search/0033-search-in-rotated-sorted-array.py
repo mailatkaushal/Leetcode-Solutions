@@ -46,12 +46,14 @@ class Solution:
         return mid
       # left half is sorted
       if A[lo] <= A[mid]:
+        # target is in left half
         if A[lo] <= target < A[mid]:
           hi = mid - 1
         else:
           lo = mid + 1
       # right half is sorted
       else:
+        # target is in right half
         if A[mid] < target <= A[hi]:
           lo = mid + 1
         else:
