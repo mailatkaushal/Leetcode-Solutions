@@ -1,4 +1,3 @@
-# custom binary search
 # Time  : O(logn)
 # Sapce : O(1)
 
