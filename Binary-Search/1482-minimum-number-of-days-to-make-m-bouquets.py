@@ -22,14 +22,14 @@ class Solution:
 
       # number of bouqets that can be made
       bouqs = 0
-      wcnt, wsize = 0, 0
+      cnt = 0
       for i in range(n):
         if bloomDay[i] <= day:
-          wcnt += 1
+          cnt += 1
         else:
-          bouqs += wcnt // k
-          wcnt = 0
-      bouqs += wcnt // k
+          bouqs += cnt // k
+          cnt = 0
+      bouqs += cnt // k
 
       if bouqs < m:
         lo = day + 1
