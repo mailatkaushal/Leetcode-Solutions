@@ -4,8 +4,6 @@
 class Solution:
   def minEatingSpeed(self, piles: List[int], h: int) -> int:
     # return the min integer k(bananas/hour) such that Koko can eat all bananas within h hours
-
-    # lower bound
     lo, hi = 1, max(piles)
 
     while lo < hi:
