@@ -1,5 +1,5 @@
 // Time  : O(2n)
-// SPace : O(1)
+// Space : O(1)
 
 class Solution {
 public:
