@@ -55,3 +55,34 @@ Node* flattenLinkedList(Node* head) {
 	}
 	return head;
 }
+
+// TLE
+// Time  : O(2mn) - Where m denotes the size of the ll & n is the average number of child nodes for each of the m nodes
+// Space : O(m)
+
+Node* merge(Node* a, Node* b) {
+	Node* dummy = new Node();
+	Node* h = dummy;
+	while (a && b) {
+		if (a->data <= b->data) {
+			h->child = a;
+			a = a->child;
+		}
+		else {
+			h->child = b;
+			b = b->child;
+		}
+		h = h->child;
+		// h->next = nullptr; 
+	}
+	if (a) h->child = a;
+	else h->child = b;
+	return dummy->child;
+}
+
+Node* flattenLinkedList(Node* head) {
+	if (head == nullptr || head->next == nullptr) 
+		return head;
+	head->next = flattenLinkedList(head->next);
+	return merge(head, head->next);
+}
