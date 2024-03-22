@@ -1,5 +1,5 @@
-// Time  : O(2N + Nlog(N)) - Where N is the total number of nodes in ll
-// Space : O(2N)
+// Time  : O(2nk + nklog(nk)) - Where n denotes the size of the ll & k is the average number of child nodes for each of the n nodes 
+// Space : O(2nk)
 
 Node* flattenLinkedList(Node* head) {
 	vector<int> vals;
@@ -22,43 +22,8 @@ Node* flattenLinkedList(Node* head) {
 	return dummy->child;
 }
 
-// TLE
-// Time  : O(2N + Nlog(N)) - Where N is the total number of nodes in ll
-// Space : O(N)
-
-Node* flattenLinkedList(Node* head) {
-	vector<int> vals;
-	Node* h = head;
-	while (h) {
-		vals.push_back(h->data);
-		if (h->child) {
-			Node* next = h->next;
-			while (h->child) {
-				vals.push_back(h->child->data);
-				h = h->child;
-			}
-			h->child = next;
-			h = h->child;
-		}
-		else {
-			h->child = h->next;
-			h = h->child;
-		}
-	}
-	sort(vals.begin(), vals.end());
-	h = head;
-	int x = 0;
-	while (h) {
-		h->data = vals[x];
-		++x;
-		h = h->child;
-	}
-	return head;
-}
-
-// TLE
-// Time  : O(2mn) - Where m denotes the size of the ll & n is the average number of child nodes for each of the m nodes
-// Space : O(m)
+// Time  : O(n(n+1)k/2)
+// Space : O(n)
 
 Node* merge(Node* a, Node* b) {
 	Node* dummy = new Node();
