@@ -22,7 +22,7 @@ Node* flattenLinkedList(Node* head) {
 	return dummy->child;
 }
 
-// Time  : O(n(n+1)k/2)
+// Time  : O(2k+3k+4k+..+nk) = O(k+2k+3k+..+(n-1)k) = O((n-1)nk/2) = O(nnk)
 // Space : O(n)
 
 Node* merge(Node* a, Node* b) {
