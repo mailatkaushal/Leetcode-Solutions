@@ -1,3 +1,6 @@
+// Time  : O(nlogn)
+// Space : O(1)
+
 int partitionArray(vector<int>& A, int l, int r) {
   int p = l, i = l, j = r;
   while (i < j) {
