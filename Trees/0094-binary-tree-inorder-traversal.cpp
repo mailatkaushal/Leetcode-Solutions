@@ -38,3 +38,31 @@ public:
     return in;
   }
 };
+
+// Morris Traversal
+// Time  : O(n)
+// Space : O(1)
+
+class Solution { 
+public:
+  vector<int> inorderTraversal(TreeNode* root) {
+    vector<int> in;
+    TreeNode* curr = root;
+    while (curr) {
+      if (curr->left == NULL) {
+        in.push_back(curr->val);
+        curr = curr->right;
+      }
+      else {
+        TreeNode* prev = curr->left;
+        while (prev->right)
+          prev = prev->right;
+        prev->right = curr;
+        TreeNode* tmp = curr;
+        curr = curr->left;
+        tmp->left = NULL;
+      }
+    }
+    return in;
+  }
+};
