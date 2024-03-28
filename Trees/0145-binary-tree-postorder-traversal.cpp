@@ -17,8 +17,8 @@ public:
   }
 };
 
-// Time  : O(n)
-// Space : O(n)
+// Time  : O(3n)
+// Space : O(2n)
 
 class Solution {
 public:
