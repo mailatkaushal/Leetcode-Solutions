@@ -55,12 +55,17 @@ public:
       }
       else {
         TreeNode* prev = curr->left;
-        while (prev->right)
+        while (prev->right && prev->right != curr) 
           prev = prev->right;
-        prev->right = curr;
-        TreeNode* tmp = curr;
-        curr = curr->left;
-        tmp->left = NULL;
+        if (prev->right == NULL) {
+          prev->right = curr;
+          curr = curr->left;
+        }
+        else {
+          prev->right = NULL;
+          in.push_back(curr->val);
+          curr = curr->right;
+        }
       }
     }
     return in;
