@@ -1,3 +1,30 @@
+// Time  : O(n^2)
+// Space : O(1)
+
+class Solution {
+public:
+  TreeNode* f(vector<int>& pre, vector<int>& in, int& i, int lo, int hi) {
+    if (lo > hi) 
+      return NULL;
+    int rootVal = pre[i];
+    int j;
+    for (j = lo; j < hi; ++j) {
+      if (rootVal == in[j])
+        break;
+    }
+    ++i;
+    TreeNode* root = new TreeNode(rootVal);
+    root->left = f(pre, in, i, lo, j-1);
+    root->right = f(pre, in, i, j+1, hi);
+    return root;
+  }
+  TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+    int n = preorder.size();
+    int i = 0;
+    return f(preorder, inorder, i, 0, n-1);
+  }
+};
+
 // Time  : O(n)
 // Space : O(n)
 
