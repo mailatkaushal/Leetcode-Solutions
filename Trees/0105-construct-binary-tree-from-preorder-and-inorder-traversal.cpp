@@ -1,52 +1,22 @@
-// Time  : O(n^2)
-// Space : O(1)
-
-class Solution {
-public:
-  TreeNode* f(vector<int>& pre, vector<int>& in, int& i, int lo, int hi) {
-    if (lo > hi) 
-      return NULL;
-    int rootVal = pre[i];
-    int j;
-    for (j = lo; j < hi; ++j) {
-      if (rootVal == in[j])
-        break;
-    }
-    ++i;
-    TreeNode* root = new TreeNode(rootVal);
-    root->left = f(pre, in, i, lo, j-1);
-    root->right = f(pre, in, i, j+1, hi);
-    return root;
-  }
-  TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-    int n = preorder.size();
-    int i = 0;
-    return f(preorder, inorder, i, 0, n-1);
-  }
-};
-
 // Time  : O(n)
 // Space : O(n)
 
 class Solution {
 public:
-  unordered_map<int, int> ump;
-  TreeNode* f(vector<int>& pre, vector<int>& in, int& i, int lo, int hi) {
-    if (lo > hi) 
-      return NULL;
-    int rootVal = pre[i];
-    ++i;
-    int j = ump[rootVal];
-    TreeNode* root = new TreeNode(rootVal);
-    root->left = f(pre, in, i, lo, j-1);
-    root->right = f(pre, in, i, j+1, hi);
+  unordered_map<int, int> inMap;
+  TreeNode* f(vector<int>& in, int inStart, int inEnd, vector<int>& pre, int preStart, int preEnd) {
+    if (inStart > inEnd) return NULL;
+    TreeNode* root = new TreeNode(pre[preStart]);
+    int i = inMap[root->val];
+    int left = i - inStart;
+    root->left = f(in, inStart, i - 1, pre, preStart + 1, preStart + left);
+    root->right = f(in, i + 1, inEnd, pre, preStart + left + 1, preEnd);
     return root;
   }
   TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-    int n = preorder.size();
+    int n = inorder.size();
     for (int x = 0; x < n; ++x) 
-      ump[inorder[x]] = x;
-    int i = 0;
-    return f(preorder, inorder, i, 0, n-1);
+      inMap[inorder[x]] = x;
+    return f(inorder, 0, n-1, preorder, 0, n-1);
   }
 };
