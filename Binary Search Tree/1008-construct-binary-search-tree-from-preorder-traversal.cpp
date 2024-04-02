@@ -28,8 +28,8 @@ public:
   }
 };
 
-// Time  : O(n^2)
-// Space : O(1)
+// Time  : O(n)
+// Space : O(h)
 
 class Solution {
 public:
