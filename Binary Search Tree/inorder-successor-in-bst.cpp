@@ -4,7 +4,7 @@
 class Solution{
 public:
     // returns the inorder successor of the Node x in BST (rooted at 'root')
-    Node * inOrderSuccessor(Node *root, Node *x) {
+    Node* inOrderSuccessor(Node* root, Node* x) {
         vector<Node*> inorder;
         while (root) {
             if (root->left == NULL) {
@@ -34,7 +34,7 @@ public:
 class Solution{
 public:
     // returns the inorder successor of the Node x in BST (rooted at 'root')
-    Node * inOrderSuccessor(Node *root, Node *x) {
+    Node* inOrderSuccessor(Node* root, Node* x) {
         while (root) {
             if (root->left == NULL) {
                 if (root->data > x->data) return root;
@@ -60,7 +60,7 @@ public:
 class Solution{
  public:
     // returns the inorder successor of the Node x in BST (rooted at 'root')
-    Node * inOrderSuccessor(Node *root, Node *x) {
+    Node* inOrderSuccessor(Node* root, Node* x) {
         Node* y = NULL;
         while (root) {
             if (root->data <= x->data) 
