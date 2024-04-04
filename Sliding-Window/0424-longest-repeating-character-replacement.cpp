@@ -9,7 +9,7 @@ public:
 
     for (int l = 0, r = 0; r < s.size(); ++r) {
       maxCnt = max(maxCnt, ++cnt[s[r] - 'A']);
-      if ((r - l + 1) - maxCnt > k) {  // size of the window - largest count of a single, unique char in the window = 
+      if ((r - l + 1) - maxCnt > k) {  // size of the window - largest count of a single, unique char in the window
         --cnt[s[l] - 'A'];
         ++l;
       }
