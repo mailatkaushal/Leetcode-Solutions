@@ -1,21 +1,43 @@
+// Time  : O(2n)
+// Space : O(26) ~ O(1)
+
+class Solution {
+public:
+  int characterReplacement(string& s, int k) {
+    int n = s.size();
+    int ma = 0;
+    vector<int> v(26);
+    int maxfreq = 0;
+    for (int i = 0, j = 0; j < n; ++j) {
+      maxfreq = max(maxfreq, ++v[s[j]-'A']);
+      while ((j-i+1) - maxfreq > k) {
+        --v[s[i]-'A'];
+        ++i;
+      }
+      ma = max(ma, j-i+1);
+    }
+    return ma;
+  }
+};
+
 // Time  : O(n)
 // Space : O(26) ~ O(1)
 
 class Solution {
 public:
-  int characterReplacement(string s, int k) {
-    vector<int> cnt(26, 0);
-    int maxCnt = 0, maxLen = 0;
-
-    for (int l = 0, r = 0; r < s.size(); ++r) {
-      maxCnt = max(maxCnt, ++cnt[s[r] - 'A']);
-      if ((r - l + 1) - maxCnt > k) {  // size of the window - largest count of a single, unique char in the window
-        --cnt[s[l] - 'A'];
-        ++l;
+  int characterReplacement(string& s, int k) {
+    int n = s.size();
+    int ma = 0;
+    vector<int> v(26);
+    int maxfreq = 0;
+    for (int i = 0, j = 0; j < n; ++j) {
+      maxfreq = max(maxfreq, ++v[s[j]-'A']);
+      if ((j-i+1) - maxfreq > k) {
+        --v[s[i]-'A'];
+        ++i;
       }
-      maxLen = max(maxLen, r - l + 1);
+      ma = max(ma, j-i+1);
     }
-
-    return maxLen;
+    return ma;
   }
 };
