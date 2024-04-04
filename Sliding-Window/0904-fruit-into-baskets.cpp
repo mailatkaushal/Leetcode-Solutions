@@ -20,7 +20,7 @@ public:
   }
 };
 
-// Time  : O(2n)
+// Time  : O(n)
 // Space : O(3) ~ O(1)
 
 class Solution {
