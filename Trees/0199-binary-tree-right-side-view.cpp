@@ -25,3 +25,21 @@ public:
     return r;
   }
 };
+
+// Time  : O(n)
+// Space : O(h)
+
+class Solution {
+public:
+  vector<int> r;
+  void f(TreeNode* root, int d) {
+    if (root == NULL) return;
+    if (r.size() < d) r.push_back(root->val);
+    f(root->right, d+1);
+    f(root->left, d+1);
+  }
+  vector<int> rightSideView(TreeNode* root) {
+    f(root, 1);
+    return r;
+  }
+};
