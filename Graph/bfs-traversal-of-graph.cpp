@@ -8,7 +8,7 @@ public:
     vector<int> res;
     queue<int> q;
     q.push(0);
-    vector<int> visited(V);
+    vector<bool> visited(V);
     visited[0] = 1;
     while (!q.empty()) {
       int u = q.front();
