@@ -35,3 +35,18 @@ public:
     return sum;
   }
 };
+
+// Time  : O(n)
+// Space : O(h)
+
+class Solution {
+public:
+  int sumNumbers(TreeNode* root, int sum = 0) {
+    if (root == NULL) return 0;
+    sum = sum*10 + root->val;
+    if (root->left == NULL && root->right == NULL) return sum;
+    int l = sumNumbers(root->left, sum);
+    int r = sumNumbers(root->right, sum);
+    return l + r;
+  }
+};
