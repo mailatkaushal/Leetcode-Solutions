@@ -1,5 +1,5 @@
-// Time  : O(n+2e)
-// Space : O(n)
+// Time  : O(V + E)
+// Space : O(V)
 
 class Solution {
 public:
