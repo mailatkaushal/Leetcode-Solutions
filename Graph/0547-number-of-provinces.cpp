@@ -1,4 +1,4 @@
-// Time  : O(2n+2e)
+// Time  : O(n^2)
 // Space : O(n)
 
 class Solution {
@@ -29,7 +29,7 @@ public:
   }
 };
 
-// Time  : O(2n+2e)
+// Time  : O(n^2)
 // Space : O(n)
 
 class Solution {
@@ -69,7 +69,7 @@ public:
   }
 };
 
-// Time  : O(2n+2e)
+// Time  : O(n^2)
 // Space : O(n)
 
 class Solution {
