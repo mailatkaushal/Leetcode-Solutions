@@ -5,22 +5,22 @@ class Solution {
 public:
   // Function to return Breadth First Traversal of given graph.
   vector<int> bfsOfGraph(int V, vector<int> adj[]) {
-    vector<int> res;
+    vector<int> A;
+    vector<bool> vis(V);
+    vis[0] = 1;
     queue<int> q;
     q.push(0);
-    vector<bool> visited(V);
-    visited[0] = 1;
     while (!q.empty()) {
       int u = q.front();
       q.pop();
-      res.push_back(u);
+      A.push_back(u);
       for (int& v : adj[u]) {
-        if (!visited[v]) {
+        if (!vis[v]) {
+          vis[v] = 1;
           q.push(v);
-          visited[v] = 1;
         }
       }
     }
-    return res;
+    return A;
   }
 };
