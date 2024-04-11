@@ -1,10 +1,9 @@
 // Time  : O(m*n)
 // Space : O(m*n)
-
 class Solution {
 public:
-  int orangesRotting(vector<vector<int>> grid) {
-    vector<vector<int>> dirs = {{-1,0},{1,0},{0,-1},{0,1}};
+  vector<vector<int>> dirs = {{-1,0},{1,0},{0,-1},{0,1}};
+  int orangesRotting(vector<vector<int>>& grid) {
     int m = grid.size();
     int n = grid[0].size();
     int fresh = 0;
@@ -21,9 +20,10 @@ public:
       ++time;
       int k = q.size();
       while (k--) {
-        int x = q.front().first;
-        int y = q.front().second;
+        auto p = q.front();
         q.pop();
+        int x = p.first;
+        int y = p.second;
         for (auto& dir : dirs) {
           int nx = x + dir[0];
           int ny = y + dir[1];
@@ -31,7 +31,7 @@ public:
             grid[nx][ny] = 2;
             q.push({nx, ny});
             --fresh;
-          } 
+          }
         }
       }
     }
