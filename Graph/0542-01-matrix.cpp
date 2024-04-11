@@ -1,10 +1,9 @@
 // Time  : O(m*n)
 // Space : O(m*n)
-
 class Solution {
 public:
+  vector<vector<int>> dirs = {{-1,0},{1,0},{0,-1},{0,1}};
   vector<vector<int>> updateMatrix(vector<vector<int>>& M) {
-    vector<vector<int>> dirs = {{-1,0},{1,0},{0,-1},{0,1}};
     int m = M.size();
     int n = M[0].size();
     vector<vector<int>> dist(m, vector<int> (n, -1));
@@ -20,7 +19,7 @@ public:
     int d = 0;
     while (!q.empty()) {
       ++d;
-      int k = q.size();;
+      int k = q.size();
       while (k--) {
         auto p = q.front();
         q.pop();
@@ -32,7 +31,7 @@ public:
           if (nx >= 0 && nx < m && ny >= 0 && ny < n && dist[nx][ny] == -1) {
             dist[nx][ny] = d;
             q.push({nx, ny});
-          }
+          } 
         }
       }
     }
