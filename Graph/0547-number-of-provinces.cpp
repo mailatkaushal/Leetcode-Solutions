@@ -68,7 +68,8 @@ public:
 };
 
 // Time  : O(n^2)
-// Space : O(n)class Solution {
+// Space : O(n)
+class Solution {
 public:
   int cnt = 0;
   void dfs(int u, vector<vector<int>>& adj, vector<bool>& vis) {
