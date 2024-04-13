@@ -31,19 +31,20 @@ public:
 
 // Time  : O(n^2)
 // Space : O(n)
+// Kahn's Algorithm
 class Solution {
 public:
   //Function to return list containing vertices in Topological order. 
   vector<int> topoSort(int V, vector<int> adj[]) {
-    vector<int> inDegree(V);
+    vector<int> ind(V);
     for (int u = 0; u < V; ++u) {
       for (int& v : adj[u]) {
-        ++inDegree[v];
+        ++ind[v];
       }
     }
     queue<int> q;
     for (int u = 0; u < V; ++u) {
-      if (inDegree[u] == 0)
+      if (ind[u] == 0)
         q.push(u);
     }
     vector<int> topo;
@@ -52,8 +53,8 @@ public:
       q.pop();
       topo.push_back(u);
       for (int& v : adj[u]) {
-        --inDegree[v];
-        if (inDegree[v] == 0) q.push(v);
+        --ind[v];
+        if (ind[v] == 0) q.push(v);
       }
     }
     return topo;
