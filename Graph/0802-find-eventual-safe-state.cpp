@@ -33,3 +33,41 @@ public:
     return safeNodes;
   }
 };
+
+// Time  : O(n^2)
+// Space : O(n^2)
+class Solution {
+public:
+  vector<int> eventualSafeNodes(vector<vector<int>>& graph) {
+    int n = graph.size();
+    vector<vector<int>> revadj(n);
+    vector<int> outdeg(n);
+    for (int i = 0; i < n; ++i) {
+      outdeg[i] = graph[i].size();
+      for (int& j : graph[i]) revadj[j].push_back(i);
+    }
+    queue<int> q;
+    for (int i = 0; i < n; ++i) {
+      if (outdeg[i] == 0) {
+        q.push(i);
+      }
+    }
+    vector<bool> safe(n);
+    while (!q.empty()) {
+      int u = q.front();
+      q.pop();
+      safe[u] = 1;
+      for (int& v : revadj[u]) {
+        --outdeg[v];
+        if (outdeg[v] == 0) q.push(v);
+      }
+    }
+    vector<int> safeNodes;
+    for (int i = 0; i < n; ++i) {
+      if (safe[i]) {
+        safeNodes.push_back(i);
+      }
+    } 
+    return safeNodes;
+  }
+};
