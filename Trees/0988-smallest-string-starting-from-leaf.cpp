@@ -1,4 +1,28 @@
 // Time  : O(n*h)
+// Space : O(h)
+class Solution {
+public:
+  string ans = "";
+  void dfs(TreeNode* x, string& s) {
+    if (x == NULL) return;
+    s += (x->val + 'a');
+    if (x->left == NULL && x->right == NULL) {
+      reverse(s.begin(), s.end());
+      if (ans == "" || ans > s) ans = s;
+      reverse(s.begin(), s.end());
+    }
+    dfs(x->left, s);
+    dfs(x->right, s);
+    s.pop_back();
+  }
+  string smallestFromLeaf(TreeNode* root) {
+    string s;
+    dfs(root, s);
+    return ans;
+  }
+};
+
+// Time  : O(n*h)
 // Space : O(n)
 class Solution {
 public:
