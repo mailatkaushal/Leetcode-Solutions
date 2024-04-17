@@ -1,44 +1,5 @@
 // Time  : O(n)
-// Space : O(n)
-
-class Solution {
-public:
-  int sumNumbers(TreeNode* root) {
-    int sum = 0;
-    unordered_map<TreeNode*, TreeNode*> parent;
-    parent[root] = NULL;
-    stack<TreeNode*> st;
-    st.push(root);
-    while (!st.empty()) {
-      TreeNode* node = st.top();
-      st.pop();
-      if (node->left == NULL && node->right == NULL) {
-        int i = 0;
-        TreeNode* cur = node;
-        int num = 0;
-        while (cur) {
-          num += cur->val * pow(10, i);
-          cur = parent[cur];
-          ++i;
-        }
-        sum += num;
-      }
-      if (node->right) {
-        parent[node->right] = node;
-        st.push(node->right);
-      }
-      if (node->left) {
-        parent[node->left] = node;
-        st.push(node->left);
-      }
-    }
-    return sum;
-  }
-};
-
-// Time  : O(n)
 // Space : O(h)
-
 class Solution {
 public:
   int sumNumbers(TreeNode* root, int sum = 0) {
@@ -48,5 +9,29 @@ public:
     int l = sumNumbers(root->left, sum);
     int r = sumNumbers(root->right, sum);
     return l + r;
+  }
+};
+
+// Time  : O(n)
+// Space : O(n)
+class Solution {
+public:
+  int sumNumbers(TreeNode* root) {
+    int sum = 0;
+    queue<pair<TreeNode*, int>> q;
+    q.push({root, root->val});
+    while (!q.empty()) {
+      auto p = q.front();
+      q.pop();
+      TreeNode* x = p.first;
+      int num = p.second;
+      if (x->left == NULL && x->right == NULL) {
+        sum += num;
+        continue;
+      }
+      if (x->left) q.push({x->left, num * 10 + x->left->val});
+      if (x->right) q.push({x->right, num * 10 + x->right->val});
+    } 
+    return sum;
   }
 };
