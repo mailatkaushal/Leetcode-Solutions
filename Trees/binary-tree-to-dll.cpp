@@ -1,34 +1,23 @@
 // Time  : O(n)
-// Space : O(n)
-
+// Space : O(h)
 class Solution {
 public: 
+  Node* prev;
+  void dfs(Node* root) {
+    if (root == NULL) return;
+    dfs(root->left);
+    prev->right = root;
+    root->left = prev;
+    prev = root;
+    dfs(root->right);
+  }
+  //Function to convert binary tree to doubly linked list and return it.
   Node* bToDLL(Node* root) {
-    vector<int> v;
-    while (root) {
-      if (root->left == NULL) {
-        v.push_back(root->data);
-        root = root->right;
-      }
-      else {
-        Node* prev = root->left;
-        while (prev->right)
-          prev = prev->right;
-        prev->right = root;
-        Node* tmp = root;
-        root = root->left;
-        tmp->left = NULL;
-      }
-    }
-    Node* head = NULL;
-    Node* prev = NULL;
-    for (int i = 0; i < v.size(); ++i) {
-      Node* curr = new Node(v[i]);
-      if (i == 0) head = curr;
-      curr->left = prev;
-      if (prev) prev->right = curr;
-      prev = curr;
-    }
+    Node* dummy = new Node(0);
+    prev = dummy;
+    dfs(root);
+    Node* head = dummy->right;
+    head->left = NULL;
     return head;
   }
 };
