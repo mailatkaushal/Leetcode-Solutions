@@ -1,47 +1,40 @@
 // Time:  O(n)
 // Space: O(n)
-
 class Solution {
 public:
   int numSubarraysWithSum(vector<int>& A, int goal) {
-    int cnt = 0;
-    unordered_map<int, int> ump;
-    ump[0] = 1;
-    int sum = 0;
-
-    for (int& n : A) {
-      sum += n;
-      if (ump.find(sum - goal) != ump.end())
-        cnt += ump[sum - goal];
-      ++ump[sum];
+    int ans = 0;
+    unordered_map<int, int> mp;
+    mp[0] = 1;
+    int x = 0;
+    for (int& a : A) {
+      x += a;
+      if (mp.find(x-goal) != mp.end()) ans += mp[x-goal];
+      mp[x]++;
     }
-
-    return cnt;
+    return ans;
   }
 };
 
 // Time:  O(4n)
 // Space: O(1)
-
 class Solution {
 public:
   int atMost(vector<int>& A, int k) {
     if (k < 0) return 0;
-    int n = A.size();
-    int cnt = 0;
-    int sum = 0;
-    for (int i = 0, j = 0; j < n; ++j) {
-      sum += A[j];
-      while (sum > k) {
-        sum -= A[i];
+    int ans = 0;
+    int x = 0;
+    for (int i = 0, j = 0; j < A.size(); ++j) {
+      x += A[j];
+      while (x > k) {
+        x -= A[i];
         ++i;
       }
-      cnt += j-i+1;
+      ans += j-i+1;
     }
-    return cnt;
+    return ans;
   }
-
-  int numSubarraysWithSum(vector<int>& A, int k) {
-    return atMost(A, k) - atMost(A, k-1);
+  int numSubarraysWithSum(vector<int>& A, int goal) {
+    return atMost(A, goal) - atMost(A, goal-1);
   }
 };

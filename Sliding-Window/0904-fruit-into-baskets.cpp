@@ -1,43 +1,19 @@
-// Time  : O(2n)
-// Space : O(3) ~ O(1)
-
-class Solution {
-public:
-  int totalFruit(vector<int>& A) {
-    int n = A.size();
-    int ma = 0;
-    unordered_map<int, int> ump;
-    for (int i = 0, j = 0; j < n; ++j) {
-      ++ump[A[j]];
-      while (ump.size() > 2) {
-        --ump[A[i]];
-        if (ump[A[i]] == 0) ump.erase(A[i]);
-        ++i;
-      }
-      ma = max(ma, j-i+1);
-    }
-    return ma;
-  }
-};
-
 // Time  : O(n)
-// Space : O(3) ~ O(1)
-
+// Space : O(3)
 class Solution {
 public:
-  int totalFruit(vector<int>& A) {
-    int n = A.size();
-    int ma = 0;
-    unordered_map<int, int> ump;
-    for (int i = 0, j = 0; j < n; ++j) {
-      ++ump[A[j]];
-      if (ump.size() > 2) {
-        --ump[A[i]];
-        if (ump[A[i]] == 0) ump.erase(A[i]);
+  int totalFruit(vector<int>& fruits) {
+    int ans = 0;
+    unordered_map<int, int> mp;
+    for (int i = 0, j = 0; j < fruits.size(); ++j) {
+      mp[fruits[j]]++;
+      while (mp.size() > 2) {
+        mp[fruits[i]]--;
+        if (mp[fruits[i]] == 0) mp.erase(fruits[i]);
         ++i;
       }
-      ma = max(ma, j-i+1);
+      ans = max(ans, j-i+1);
     }
-    return ma;
+    return ans;
   }
 };

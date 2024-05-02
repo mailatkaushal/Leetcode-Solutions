@@ -1,40 +1,38 @@
 // Time:  O(n)
 // Space: O(n)
-
 class Solution {
 public:
   int numberOfSubarrays(vector<int>& A, int k) {
-    int cnt = 0;
-    unordered_map<int, int> ump;
-    ump[0] = 1;
+    int ans = 0;
+    unordered_map<int, int> mp;
+    mp[0] = 1;
     int odds = 0;
     for (int& a : A) {
-      odds += (a % 2);
-      cnt += ump[odds - k]; 
-      ++ump[odds];
+      odds += a % 2 == 1 ? 1 : 0;
+      if (mp.find(odds-k) != mp.end()) ans += mp[odds-k];
+      mp[odds]++;
     }
-    return cnt;
+    return ans;
   }
 };
 
 // Time:  O(4n)
 // Space: O(1)
-
 class Solution {
 public:
   int atMost(vector<int>& A, int k) {
     int n = A.size();
-    int cnt = 0;
+    int ans = 0;
     int odds = 0;
     for (int i = 0, j = 0; j < n; ++j) {
-      if (A[j] % 2 == 1) ++odds;
+      odds += A[j] % 2 == 1;
       while (odds > k) {
-        if (A[i] % 2 == 1) --odds;
+        odds -= A[i] % 2 == 1;
         ++i;
       }
-      cnt += j-i+1;
+      ans += j-i+1;
     }
-    return cnt;
+    return ans;
   }
 
   int numberOfSubarrays(vector<int>& A, int k) {
