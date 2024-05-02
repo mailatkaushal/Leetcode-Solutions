@@ -1,6 +1,5 @@
 // Time  : O(n)
 // Space : O(n)
-
 class Solution {
 public:
   void flatten(TreeNode* root) {
@@ -22,9 +21,24 @@ public:
 };
 
 // Time  : O(n)
+// Space : O(h)
+// Reverse Postorder
+class Solution {
+public:
+  TreeNode* prev = NULL;
+  void flatten(TreeNode* root) {
+    if (root == NULL) return;
+    flatten(root->right);
+    flatten(root->left);
+    root->right = prev;
+    root->left = NULL;
+    prev = root;
+  }
+};
+
+// Time  : O(n)
 // Space : O(1)
 // Morris Traversal
-
 class Solution {
 public:
   void flatten(TreeNode* root) {
