@@ -1,24 +1,25 @@
 // Time:  O(logn)
 // Space: O(1)
-
 class Solution {
 public:
   double myPow(double x, int n) {
-    double res = 1;
-    long long exp = n;
-
-    if (exp < 0) {
-      x = 1 / x;
-      exp = -exp;
+    long long nn = n;
+    if (nn < 0) {
+      x = 1/x;
+      nn = -nn;
     }
-
-    while (exp) {
-      if (exp % 2 == 1)
-        res *= x;
-      x *= x;
-      exp >>= 1;
+    double ans = 1;
+    while (nn) {
+      if (nn % 2 == 0) {
+        x *= x;
+        nn /= 2;
+      }
+      else {
+        ans *= x;
+        x *= x;
+        nn /= 2;
+      }
     }
-
-    return res;
+    return ans;
   }
 };
