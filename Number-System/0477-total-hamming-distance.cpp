@@ -1,23 +1,18 @@
-// The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
-
-// Time  : O(n)
+// Time  : O(n*32)
 // Space : O(1)
-
 class Solution {
 public:
   int totalHammingDistance(vector<int>& A) {
+    // The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
     int n = A.size();
-    int res = 0;
-
-    for (int k = 0; k < 32; ++k) { 
-      int cnt = 0;  // number of 1 bit
-
-      for (int i = 0; i < n; ++i) 
-        cnt += (A[i] >> k) & 1;
-
-      res += cnt * (n - cnt);  // distance on this particular bit
+    int ans = 0;
+    for (int j = 0; j <= 31; ++j) {
+      int ones = 0;
+      for (int i = 0; i < n; ++i) {
+        ones += (A[i] >> j) & 1;
+      }
+      ans += ones * (n - ones);
     }
-
-    return res;
+    return ans;
   }
 };

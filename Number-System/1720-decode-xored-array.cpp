@@ -1,27 +1,14 @@
-# Time  : O(n)
-# Space : O(n)
-
-class Solution:
-  def decode(self, encoded: List[int], first: int) -> List[int]:
-    '''
-      arr -> encoded
-      arr[i] ^ arr[i+1] = encoded[i]
-               to find
-
-      a xor b = c
-      (a xor b) xor a = c xor a
-      (a xor a) xor b = c xor a
-      0 xor b = c xor a
-      b = c xor a
-
-      arr[i+1] = encoded[i] ^ arr[i]
-
-    '''
-
-    arr = [0] * (len(encoded) + 1)
-    arr[0] = first
-
-    for i in range(len(encoded)):
-      arr[i+1] = encoded[i] ^ arr[i]
-
-    return arr
+// Time  : O(n)
+// Space : O(1)
+class Solution {
+public:
+  vector<int> decode(vector<int>& encoded, int first) {
+    int n = encoded.size();
+    vector<int> ans(n+1);
+    ans[0] = first;
+    for (int i = 1; i <= n; ++i) {
+      ans[i] = encoded[i-1] ^ ans[i-1];
+    }
+    return ans;
+  }
+};
