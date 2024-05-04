@@ -8,8 +8,8 @@ public:
     x ^= k;
     int diff = 0;
     while (x) {
-      diff += (x & 1);
-      x >>= 1;
+      x = x & (x - 1);
+      ++diff;
     }
     return diff;
   }
