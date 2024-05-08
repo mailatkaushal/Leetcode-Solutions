@@ -1,63 +1,30 @@
 // Time  : O(n)
-// Space : O(n)
-
-class Solution {
-public:
-  vector<int> findMode(TreeNode* root) {
-    vector<int> res;
-    int streak = 0;
-    int maxStreak = 0;
-    int num = -1e5-1;
-    while (root) {
-      if (root->left == NULL) {
-        if (num == root->val) ++streak;
-        else { num = root->val; streak = 1; }
-        if (streak > maxStreak) { res = {}; maxStreak = streak; }
-        if (streak == maxStreak) res.push_back(root->val);
-        root = root->right;
-      }
-      else {
-        TreeNode* pre = root->left;
-        while (pre->right)
-          pre = pre->right;
-        pre->right = root;
-        TreeNode* tmp = root;
-        root = root->left;
-        tmp->left = NULL;
-      }
-    }
-    return res;
-  }
-};
-
-// Time  : O(n)
 // Space : O(1)
-
 class Solution {
 public:
-  vector<int> findMode(TreeNode* root) {
-    vector<int> res;
+  vector<int> findMode(TreeNode* x) {
+    // mode - the most frequently occurred element
+    vector<int> ans;
     int streak = 0;
     int maxStreak = 0;
-    int num = -1e5-1;
-    while (root) {
-      if (root->left == NULL) {
-        if (num == root->val) ++streak;
-        else { num = root->val; streak = 1; }
-        if (streak > maxStreak) { res = {}; maxStreak = streak; }
-        if (streak == maxStreak) res.push_back(root->val);
-        root = root->right;
+    int i = INT_MIN;
+    while (x) {
+      if (x->left == NULL) {
+        if (i == x->val) ++streak;
+        else { i = x->val; streak = 1; }
+        if (streak > maxStreak) { maxStreak = streak; ans = {}; }
+        if (streak == maxStreak) ans.push_back(i);
+        x = x->right;
       }
       else {
-        TreeNode* pre = root->left;
-        while (pre->right)
-          pre = pre->right;
-        pre->right = root;
-        TreeNode* tmp = root;
-        root = root->left;
-        tmp->left = NULL;
+        TreeNode* y = x->left;
+        while (y->right) y = y->right;
+        y->right = x;
+        TreeNode* z = x;
+        x = x->left;
+        z->left = NULL;
       }
     }
-    return res;
+    return ans;
   }
 };

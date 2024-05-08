@@ -1,42 +1,22 @@
 // Time  : O(n)
 // Space : O(n)
-
 class Solution {
 public:
-  vector<string> binaryTreePaths(TreeNode* root) {
-    vector<string> vs;
-    unordered_map<TreeNode*, TreeNode*> parent;
-    parent[root] = NULL;
-    stack<TreeNode*> st;
-    st.push(root);
-    while (!st.empty()) {
-      TreeNode* node = st.top();
-      st.pop();
-      if (node->left == NULL && node->right == NULL) {
-        TreeNode* cur = node;
-        vector<int> v;
-        while (cur) {
-          v.push_back(cur->val);
-          cur = parent[cur];
-        }
-        int n = v.size();
-        string s;
-        s += to_string(v[n-1]);
-        for (int i = n-2; i >= 0; --i) {
-          s += "->" + to_string(v[i]);
-          cur = parent[cur];
-        }
-        vs.push_back(s);
-      }
-      if (node->right) {
-        parent[node->right] = node;
-        st.push(node->right);
-      }
-      if (node->left) {
-        parent[node->left] = node;
-        st.push(node->left);
-      }
+  void findPaths(TreeNode* x, string a, vector<string>& ans) {
+    if (x == NULL) return;
+    a += "->" + to_string(x->val);
+    if (x->left == NULL && x->right == NULL) {
+      ans.push_back(a);
+      return;
     }
-    return vs;
+    findPaths(x->left, a, ans);
+    findPaths(x->right, a, ans);
+  }
+  vector<string> binaryTreePaths(TreeNode* root) {
+    if (root->left == NULL && root->right == NULL) return {to_string(root->val)};
+    vector<string> ans;
+    findPaths(root->left, to_string(root->val), ans);
+    findPaths(root->right, to_string(root->val), ans);
+    return ans;
   }
 };

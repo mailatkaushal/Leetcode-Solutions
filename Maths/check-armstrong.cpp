@@ -1,20 +1,15 @@
 // Time  : O(n)
 // Space : O(1)
-
-bool checkArmstrong(int n){
-	if (n == 0) return true;
-	int cntDigit = 0;
-	int num = n;
-	while (num) {
-		cntDigit++;
-		num /= 10;
+class Solution {
+public:
+	string armstrongNumber(int n) {
+		int num = n;
+		int x = 0;
+		while (n) {
+			int y = n % 10;
+			x += y*y*y;
+			n /= 10;
+		}
+		return num == x ? "Yes" : "No";
 	}
-	num = n;
-	int sum = 0;
-	while (num) {
-		int digit = num % 10;
-		sum += pow(digit, cntDigit);
-		num /= 10;
-	}
-	return n == sum;
-}
+};

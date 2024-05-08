@@ -1,40 +1,11 @@
-// Time  : O(n)
-// Space : O(1)
-
-class Solution {
-public:
-  int rangeSumBST(TreeNode* root, int lo, int hi) {
-    int x = 0;
-    while (root) {
-      if (root->left == NULL) {
-        if (lo <= root->val && root->val <= hi) x += root->val;
-        root = root->right;
-      }
-      else {
-        TreeNode* prev = root->left;
-        while (prev->right) 
-          prev = prev->right;
-        prev->right = root;
-        TreeNode* tmp = root;
-        root = root->left;
-        tmp->left = NULL;
-      }
-    }
-    return x;
-  }
-};
-
-// Time  : O(n)
+// Time  : O(# of nodes in range [lo-hi])
 // Space : O(h)
-
 class Solution {
 public:
-  int rangeSumBST(TreeNode* root, int& lo, int& hi) {
-    if (root == NULL) return 0;
-    if (lo <= root->val && root->val <= hi) 
-      return root->val + rangeSumBST(root->left, lo, hi) + rangeSumBST(root->right, lo, hi);
-    if (root->val < lo) 
-      return rangeSumBST(root->right, lo, hi);
-    return rangeSumBST(root->left, lo, hi);
+  int rangeSumBST(TreeNode* x, int lo, int hi) {
+    if (x == NULL) return 0;
+    if (lo <= x->val && x->val <= hi) return x->val + rangeSumBST(x->left, lo, hi) + rangeSumBST(x->right, lo, hi);
+    if (x->val < lo) return rangeSumBST(x->right, lo, hi);
+    return rangeSumBST(x->left, lo, hi);
   }
 };

@@ -1,27 +1,13 @@
 // Time  : O(logn)
-// Space : O(logn)
-
-class Solution {
-public:
-  TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* x, TreeNode* y) {
-    if (root == NULL || root == x || root == y) return root;
-    if (root->val < x->val && root->val < y->val) return lowestCommonAncestor(root->right, x, y);
-    if (root->val > x->val && root->val > y->val) return lowestCommonAncestor(root->left, x, y);
-    return root;
-  }
-};
-
-// Time  : O(logn)
 // Space : O(1)
-
 class Solution {
 public:
-  TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* x, TreeNode* y) {
-    while (root) {
-      if (root->val < x->val && root->val < y->val) root = root->right;
-      else if (root->val > x->val && root->val > y->val) root = root->left;
+  TreeNode* lowestCommonAncestor(TreeNode* x, TreeNode* a, TreeNode* b) {
+    while (x) {
+      if (x->val < a->val && x->val < b->val) x = x->right;
+      else if (x->val > a->val && x->val > b->val) x = x->left;
       else break;
     }
-    return root;
+    return x;
   }
 };

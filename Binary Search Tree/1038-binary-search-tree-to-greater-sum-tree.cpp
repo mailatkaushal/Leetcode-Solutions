@@ -7,21 +7,21 @@ public:
     TreeNode* x = root;
     while (x) {
       if (x->right == NULL) {
-        x->val += sum;
-        sum = x->val;
+        sum += x->val;
+        x->val = sum;
         x = x->left;
       }
       else {
-        TreeNode* pre = x->right;
-        while (pre->left && pre->left != x) pre = pre->left;
-        if (pre->left == NULL) {
-          pre->left = x;
+        TreeNode* y = x->right;
+        while (y->left && y->left != x) y = y->left;
+        if (y->left == NULL) {
+          y->left = x;
           x = x->right;
         }
         else {
-          pre->left = NULL;
-          x->val += sum;
-          sum = x->val;
+          y->left = NULL;
+          sum += x->val;
+          x->val = sum;
           x = x->left;
         }
       }
