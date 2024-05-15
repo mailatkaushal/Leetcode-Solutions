@@ -1,27 +1,17 @@
-// Time  : O(nlogm) - Where n is size of A, m is the max in A
+// Time  : O(nlogm)
 // Space : O(1)
-
 class Solution {
 public:
   int smallestDivisor(vector<int>& A, int threshold) {
-    // return the smallest positive integer divisor, such that upon dividing all the elements of the given array by it, the sum of the division’s result is less than or equal to the given threshold value.
-
-    // if (n > threshold)
-    //   return -1;
-
-    int lo = 1, hi = *max_element(A.begin(), A.end());
-
+    int lo = 1;
+    int hi = *max_element(A.begin(), A.end());
     while (lo < hi) {
-      int div = lo + (hi - lo) / 2;
-      int sum = 0;
-      for (int& n : A)
-        sum += ceil((double)n / div);
-      if (sum > threshold)
-        lo = div + 1;
-      else
-        hi = div;
+      int d = (lo + hi)>>1;
+      long long sum = 0;
+      for (int& a : A) sum += ceil(1.0 * a / d);
+      if (sum > threshold) lo = d+1;
+      else hi = d;
     }
-
     return lo;
   }
 };

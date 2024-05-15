@@ -1,15 +1,15 @@
 // Time  : O(logn)
 // Space : O(1)
-class Solution{
-public:	
-	int findKRotation(int A[], int n) {
+class Solution {
+public:
+  int searchInsert(vector<int>& A, int x) {
     int lo = 0;
-    int hi = n-1;
+    int hi = A.size();
     while (lo < hi) {
       int mid = (lo + hi)>>1;
-      if (A[mid] > A[hi]) lo = mid+1;
+      if (A[mid] < x) lo = mid+1;
       else hi = mid;
     }
     return lo;
-	}
+  }
 };

@@ -1,29 +1,16 @@
-# Time  : O(logn)
-# Space : O(1)
-
-int f(int& mid, int& n, int& m) {
-  long long res = 1;
-  for (int i = 1; i <= n; ++i) {
-    res *= mid;
-    if (res > m)
-      return 2;
-  }
-  if (res == m)
-    return 1;
-  return 0;
-}
-
-int NthRoot(int n, int m) {
-  int lo = 1, hi = m;
-  while (lo <= hi) {
-    int mid = lo + (hi - lo) / 2;
-    int midN = f(mid, n, m);
-    if (midN == 0)
-      lo = mid + 1;
-    else if (midN == 2)
-      hi = mid - 1;
-    else
-      return mid;
-  }
-  return -1;
-}
+// Time  : O(logm)
+// Space : O(1)
+class Solution{
+public:
+	int NthRoot(int n, int m) {
+    int lo = 1;
+    int hi = m;
+    while (lo <= hi) {
+      int mid = (lo + hi)>>1;
+      if (pow(mid, n) == m) return mid;
+      else if (pow(mid, n) < m) lo = mid+1;
+      else hi = mid-1;
+    }
+    return -1;
+	}
+};
