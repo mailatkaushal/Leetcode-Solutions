@@ -1,41 +1,15 @@
 // Time:  O(n)
 // Space: O(1)
-
 class Solution {
 public:
   int maxProfit(vector<int>& prices) {
-    int minPrice = prices[0];
-    int maxProfit = 0;
-    
-    for (int i = 1; i < prices.size(); ++i) {
-      if (prices[i] > prices[i-1])
-        maxProfit = max(maxProfit, prices[i] - minPrice);
-      else 
-        minPrice = min(minPrice, prices[i]);
+    int n = prices.size();
+    int ans = 0;
+    int minn = prices[0];
+    for (int i=1; i<n; ++i) {
+      ans = max(ans, prices[i] - minn);
+      minn = min(minn, prices[i]);
     }
-
-    return maxProfit;
-  }
-};
-
-// Sliding Window
-// Time:  O(n)
-// Space: O(1)
-
-class Solution {
-public:
-  int maxProfit(vector<int>& prices) {
-    int maxProfit = 0;
-    int i = 0, j = 1;
-    
-    while (j < prices.size()) {
-      if (prices[i] < prices[j]) 
-        maxProfit = max(maxProfit, prices[j] - prices[i]);
-      else 
-        i = j;
-      j++;
-    }
-
-    return maxProfit;
+    return ans;
   }
 };
