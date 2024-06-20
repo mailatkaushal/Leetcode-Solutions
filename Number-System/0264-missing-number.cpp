@@ -3,9 +3,9 @@
 class Solution {
 public:
   int missingNumber(vector<int>& A) {
-    int x = 0;
-    for (int i = 1; i <= A.size(); ++i) x ^= i;
-    for (int& a : A) x ^= a;
-    return x;
+    int ret = 0;
+    for (int i=0; i<A.size(); ++i) ret ^= i ^ A[i];
+    ret ^= A.size();
+    return ret;
   }
 };
