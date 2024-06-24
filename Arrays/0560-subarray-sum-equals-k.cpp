@@ -6,11 +6,11 @@ public:
     int ans = 0;
     unordered_map<int, int> mp;
     mp[0] = 1;
-    int x = 0;
-    for (int& a : A) {
-      x += a;
-      if (mp.find(x-k) != mp.end()) ans += mp[x-k];
-      mp[x]++;
+    int sum = 0;
+    for (int i=0; i<A.size(); ++i) {
+      sum += A[i];
+      ans += mp[sum-k];
+      mp[sum]++;
     }
     return ans;
   }
