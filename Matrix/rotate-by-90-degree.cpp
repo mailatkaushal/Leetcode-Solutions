@@ -1,15 +1,16 @@
-// Time  : O(2n)
-// Space : O(1)
-
-void rotate(vector<vector<int>>& M) {
-  int n = M.size();
-  int x = 0, y = n-1;
-  while (x < y) {
-    for (int i = 0; i < n; ++i) 
-      swap(M[i][x], M[i][y]);
-    ++x, --y;
+class Solution {
+public:
+  void rotate(vector<vector<int>>& M) {
+    int m = M.size();
+    int n = M[0].size();
+    for (int i=0; i<m; ++i) {
+      for (int j=0; j<i; ++j) {
+        swap(M[i][j], M[j][i]);
+      }
+    }
+    for (int i=0; i<m; ++i) {
+      int x = 0, y = n-1;
+      while (x < y) swap(M[i][x++], M[i][y--]);
+    }
   }
-  for (int i = 0; i < n; ++i) 
-    for (int j = i+1; j < n; ++j) 
-      swap(M[i][j], M[j][i]);
-}
+};
