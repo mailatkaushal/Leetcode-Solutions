@@ -14,7 +14,7 @@ public:
         if (dist[u] != 1e8 && dist[u] + duv < dist[v]) dist[v] = dist[u] + duv;
       }
     }
-    // Nth relaxation to check negative cycle
+    // nth relaxation to check negative cycle
     for (auto& e : edges) {
       int u = e[0];
       int v = e[1];
