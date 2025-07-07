@@ -10,16 +10,16 @@ public:
         st.push(u);
     }
     vector<int> topoSort(int V, vector<int> adj[]) {
-      stack<int> st;
-      vector<bool> vis(V);
-      for (int i=0; i<V; ++i) {
-          if (!vis[i]) dfs(i, vis, adj, st);
-      }
-      vector<int> ans;
-      while (!st.empty()) {
-          ans.push_back(st.top()); st.pop();
-      }
-      return ans;
+        stack<int> st;
+        vector<bool> vis(V);
+        for (int i=0; i<V; ++i) {
+            if (!vis[i]) dfs(i, vis, adj, st);
+        }
+        vector<int> ans;
+        while (!st.empty()) {
+            ans.push_back(st.top()); st.pop();
+        }
+        return ans;
     }
 };
 // Kahn's Algo / BFS

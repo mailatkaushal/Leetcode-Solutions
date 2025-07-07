@@ -22,8 +22,8 @@ TreeNode* invertTree(TreeNode* root) {
         auto tmp=x->left;
         x->left=x->right;
         x->right=tmp;
-        if (x->right) q.push(x->right);
         if (x->left) q.push(x->left);
+        if (x->right) q.push(x->right);
     }
     return root;
 }

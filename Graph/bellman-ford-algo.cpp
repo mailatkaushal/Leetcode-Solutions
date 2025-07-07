@@ -2,6 +2,8 @@
 // Space : O(1)
 class Solution {
 public:
+  // Graph has negative weights
+  // Need to detect negative cycles
   vector<int> bellman_ford(int n, vector<vector<int>>& edges, int src) {
     vector<int> dist(n, 1e8);
     dist[src] = 0;

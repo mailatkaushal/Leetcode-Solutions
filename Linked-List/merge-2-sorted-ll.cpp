@@ -1,4 +1,4 @@
-ListNode* merge(ListNode* a, ListNode* b) {
+ListNode* mergeTwoLists(ListNode* a, ListNode* b) {
     ListNode* dummy=new ListNode(0);
     ListNode* d=dummy;
     while (a&&b) {
@@ -13,6 +13,6 @@ ListNode* merge(ListNode* a, ListNode* b) {
         d=d->next;
     }
     if (a) d->next=a;
-    if (b) d->next=b;
+    else if (b) d->next=b;
     return dummy->next;
 }

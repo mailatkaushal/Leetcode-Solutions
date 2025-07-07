@@ -1,0 +1,18 @@
+vector<int> sortArray(vector<int>& A) {
+    if (A.size()==1) return A;
+    int x=A.back();
+    A.pop_back();
+    sortArray(A);
+    insert(A,x);
+    return A;
+}
+void insert(vector<int>& A, int x) {
+    if (A.size()==0 || A.back()<=x) {
+        A.push_back(x);
+        return;
+    }
+    int val=A.back();
+    A.pop_back();
+    insert(A,x);
+    A.push_back(val);
+}
